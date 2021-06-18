@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  surname: MyString
+  email: MyString
+  birthday: 2021-06-18
+  games: 1
+  rank: 1
+
+two:
+  name: MyString
+  surname: MyString
+  email: MyString
+  birthday: 2021-06-18
+  games: 1
+  rank: 1

@@ -1,0 +1,62 @@
+
+
+
+<%= form_with(model: member) do |form| %>
+
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+        <% member.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name, for:"name" %>
+    <%= form.text_field :name, class:"form-control", id:"name" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname, for:"surname" %>
+    <%= form.text_field :surname, class:"form-control", id:"surname" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email, for:"email" %>
+    <%= form.text_field :email, class:"form-control", id:"email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday, for:"birthday" %> <br>
+    <%= form.date_select :birthday, class:"form-control", id:"birthday" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :games, for:"games" %>
+    <%= form.number_field :games, class:"form-control", id:"games" %>
+  </div>
+
+  <div class="field d-none">
+    <%= form.label :rank, for:"rank" %>
+
+# check if existimg member for edit and leave as is,
+# else for new members default to lowest rank +1
+# field is hidden
+    <% if @member.id  %>
+    <%= form.number_field :rank, class:"form-control", id:"rank" %>
+    <% else %>
+    <% lastMember = Member.order(:rank).last %>
+    <% newrank = lastMember.rank + 1 %>
+    <%= form.number_field :rank, value:newrank, class:"form-control", id:"rank" %>
+    <% end %>
+    
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

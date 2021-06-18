@@ -1,0 +1,52 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><strong>Name and Surname:</strong></th>
+      <th><%= @member.name+ ' ' + @member.surname %></th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>
+        <strong>Email:</strong>
+      </td>
+      <td>
+      <%= @member.email %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Birthday:</strong>
+      </td>
+      <td>
+        <%= @member.birthday %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Games:</strong>
+      </td>
+      <td>
+        <%= @member.games %>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <strong>Rank:</strong>
+      </td>
+      <td>
+        <%= @member.rank %>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
