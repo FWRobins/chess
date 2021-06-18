@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Chess Club management for SwiftVee
 
-Things you may want to cover:
+Requirements:
 
-* Ruby version
+* Ruby - download via browser
 
-* System dependencies
+* SQLite3 - download via browser and add to path
 
-* Configuration
+* Node.js - download via browser
 
-* Database creation
+* Yarn - download via npm
 
-* Database initialization
+Run system:
 
-* How to run the test suite
+* run server via CLI with command "rails server" from within 'chess' directory
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* browes to 127.0.0.1:3000
