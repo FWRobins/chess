@@ -26,9 +26,9 @@
         <td><%= member.birthday %></td>
         <td><%= member.games %></td>
         <td><%= member.rank %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Member Details', member %></td>
+        <td><%= link_to 'Edit member', edit_member_path(member) %></td>
+        <td><%= link_to 'Disband Member', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

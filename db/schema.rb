@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_123340) do
+ActiveRecord::Schema.define(version: 2021_06_19_104322) do
+
+  create_table "matches", force: :cascade do |t|
+    t.string "name"
+    t.integer "result"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "member1"
+    t.integer "member2"
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name"

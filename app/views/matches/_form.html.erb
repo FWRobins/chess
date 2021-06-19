@@ -1,0 +1,49 @@
+<%= form_with(model: match) do |form| %>
+  <% if match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+        <% match.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :member1 %>
+    <% if @match.id %>
+    <%= form.number_field :member1, disabled:true %>
+    <% else %>
+    <%= form.select :member1, options_for_select(@members.map{ |s| [s.name, s.id]}) %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :member2 %>
+    <% if @match.id %>
+    <%= form.number_field :member2, disabled:true %>
+    <% else %>
+    <%= form.select :member2, options_for_select(@members.map{ |s| [s.name, s.id]}) %>
+    <% end %>
+  </div>
+
+<% if @match.id %>
+  <div class="field">
+<% else %>
+  <div class="field d-none">
+<% end %>
+    <%= form.label :result %>
+    <%= form.select :result, options_for_select([0,1,2]) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

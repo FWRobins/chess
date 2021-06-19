@@ -35,17 +35,25 @@
     <%= form.date_select :birthday, class:"form-control", id:"birthday" %>
   </div>
 
-  <div class="field">
-    <%= form.label :games, for:"games" %>
-    <%= form.number_field :games, class:"form-control", id:"games" %>
-  </div>
+
+  <!-- check if existimg member for edit and leave as is,
+  else for new members default to 0
+  field is hidden -->
 
   <div class="field d-none">
-    <%= form.label :rank, for:"rank" %>
+    <%= form.label :games, for:"games" %>
+    <% if @member.id  %>
+    <%= form.number_field :games, class:"form-control", id:"games" %>
+    <% else %>
+    <%= form.number_field :games, class:"form-control", id:"games", value:0 %>
+    <% end %>
+  </div>
 
-# check if existimg member for edit and leave as is,
-# else for new members default to lowest rank +1
-# field is hidden
+  <!-- check if existimg member for edit and leave as is,
+  else for new members default to lowest rank +1
+  field is hidden -->
+  <div class="field d-none">
+    <%= form.label :rank, for:"rank" %>
     <% if @member.id  %>
     <%= form.number_field :rank, class:"form-control", id:"rank" %>
     <% else %>
@@ -53,10 +61,10 @@
     <% newrank = lastMember.rank + 1 %>
     <%= form.number_field :rank, value:newrank, class:"form-control", id:"rank" %>
     <% end %>
-    
+
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success"%>
   </div>
 <% end %>
