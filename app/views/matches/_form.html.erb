@@ -13,37 +13,42 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required:true, class:"form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :member1 %>
+
     <% if @match.id %>
-    <%= form.number_field :member1, disabled:true %>
+    <%= form.label :member1, "Player 1: #{Member.find(@match.member1).name}" %>
+    <%= form.number_field :member1, hidden:true, class:"form-control"  %>
     <% else %>
-    <%= form.select :member1, options_for_select(@members.map{ |s| [s.name, s.id]}) %>
+    <%= form.label :member1, "Player 1: " %>
+    <%= form.select :member1, options_for_select(@members.map{ |s| [s.name, s.id]}), class:"form-control"  %>
     <% end %>
   </div>
 
   <div class="field">
-    <%= form.label :member2 %>
     <% if @match.id %>
-    <%= form.number_field :member2, disabled:true %>
+    <%= form.label :member2, "Player 2: #{Member.find(@match.member2).name}" %>
+    <%= form.text_field :member2, hidden:true, class:"form-control" %>
     <% else %>
-    <%= form.select :member2, options_for_select(@members.map{ |s| [s.name, s.id]}) %>
+    <%= form.label :member2, "Player 2: " %>
+    <%= form.select :member2, options_for_select(@members.map{ |s| [s.name, s.id]}), class:"form-control"  %>
     <% end %>
   </div>
 
-<% if @match.id %>
-  <div class="field">
-<% else %>
-  <div class="field d-none">
-<% end %>
-    <%= form.label :result %>
-    <%= form.select :result, options_for_select([0,1,2]) %>
-  </div>
+
+  <% if @match.id %>
+    <div class="field">
+  <% else %>
+    <div class="field d-none">
+  <% end %>
+      <%= form.label :result %>
+      <%= form.select :result, [["Match Draw",0],["Player 1 wins",1],["Player 2 wins",2]], class:"form-control"  %>
+    </div>
+
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-success" %>
   </div>
 <% end %>

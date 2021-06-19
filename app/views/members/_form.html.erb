@@ -58,7 +58,11 @@
     <%= form.number_field :rank, class:"form-control", id:"rank" %>
     <% else %>
     <% lastMember = Member.order(:rank).last %>
-    <% newrank = lastMember.rank + 1 %>
+      <% if lastMember %>
+      <% newrank = lastMember.rank + 1 %>
+      <% else %>
+      <% newrank =  1 %>
+      <% end %>
     <%= form.number_field :rank, value:newrank, class:"form-control", id:"rank" %>
     <% end %>
 
