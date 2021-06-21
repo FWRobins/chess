@@ -3,7 +3,8 @@ class MatchesController < ApplicationController
 
   # GET /matches or /matches.json
   def index
-    @matches = Match.all
+    # @matches = Match.all
+    @matches = Match.where(completed: false)
   end
 
   # GET /matches/1 or /matches/1.json
@@ -39,6 +40,7 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1 or /matches/1.json
   def update
     @match = Match.find(params[:id])
+    @match.completed = true
     @member1 = Member.find(@match.member1)
     @member2 = Member.find(@match.member2)
 
@@ -47,7 +49,7 @@ class MatchesController < ApplicationController
 
     # update rankings based on match outcome
     update_ranks(@member1, @member2, match_params["result"])
-    
+
     # reset all standings
     # sql = "update Members set games=0;"
     # records_array = ActiveRecord::Base.connection.execute(sql)

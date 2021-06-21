@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :name %>
     <%= form.text_field :name, required:true, class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
 
     <% if @match.id %>
-    <%= form.label :member1, "Player 1: #{Member.find(@match.member1).name}" %>
+    <%= form.label :member1, "Player 1: #{Member.find(@match.member1).name} #{Member.find(@match.member1).surname}" %>
     <%= form.number_field :member1, hidden:true, class:"form-control"  %>
     <% else %>
     <%= form.label :member1, "Player 1: " %>
@@ -27,9 +27,9 @@
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <% if @match.id %>
-    <%= form.label :member2, "Player 2: #{Member.find(@match.member2).name}" %>
+    <%= form.label :member2, "Player 2: #{Member.find(@match.member2).name} #{Member.find(@match.member2).surname}" %>
     <%= form.text_field :member2, hidden:true, class:"form-control" %>
     <% else %>
     <%= form.label :member2, "Player 2: " %>
@@ -39,16 +39,20 @@
 
 
   <% if @match.id %>
-    <div class="field">
-  <% else %>
-    <div class="field d-none">
-  <% end %>
+    <div class="field form-group">
       <%= form.label :result %>
       <%= form.select :result, [["Match Draw",0],["Player 1 wins",1],["Player 2 wins",2]], class:"form-control"  %>
+  <% else %>
+    <div class="field d-none">
+      <%= form.label :result %>
+      <%= form.number_field value:'nil', class:"form-control" %>
+  <% end %>
     </div>
 
 
+
+
   <div class="actions">
-    <%= form.submit class:"btn btn-success" %>
+    <%= form.submit class:"btn btn-dark" %>
   </div>
 <% end %>

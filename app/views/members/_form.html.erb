@@ -20,17 +20,17 @@
     <%= form.text_field :name, class:"form-control", id:"name" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :surname, for:"surname" %>
     <%= form.text_field :surname, class:"form-control", id:"surname" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :email, for:"email" %>
     <%= form.text_field :email, class:"form-control", id:"email" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :birthday, for:"birthday" %> <br>
     <%= form.date_select :birthday, class:"form-control", id:"birthday" %>
   </div>
@@ -69,6 +69,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit class:"btn btn-success"%>
+    <%= form.submit class:"btn btn-dark"%>
   </div>
 <% end %>

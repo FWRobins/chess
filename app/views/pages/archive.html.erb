@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <hr>
-<h1>Upcoming Matches</h1>
+<h1>Past Matches</h1>
 <br>
 
 <table class="table table-hover table-responsive">
@@ -9,7 +9,8 @@
       <th>Match Name</th>
       <th>Player 1</th>
       <th>Player 2</th>
-      <th colspan="2"></th>
+      <th>Result</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -19,8 +20,8 @@
         <td><%= match.name %></td>
         <td><%= Member.find(match.member1).name %></td>
         <td><%= Member.find(match.member2).name %></td>
-        <td><%= link_to 'Enter Match results', edit_match_path(match) %></td>
-        <td><%= link_to 'Cancel Match', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% result_hash = {"0"=> "Match Draw", "1"=> "Player 1 wins", "2"=> "Player 2 wins"} %>
+        <td><%= result_hash[match.result.to_s] %></td>
       </tr>
     <% end %>
   </tbody>
