@@ -18,7 +18,7 @@ RSpec.describe Match, type: :model do
     end
 
     it 'should save successfully' do
-      member = Match.new(name: "name", member1: "member1", member2: "member2", ).save
+      member = Match.new(name: "name", member1: 1, member2: 2, completed: false).save
       expect(member).to eq(true)
     end
   end

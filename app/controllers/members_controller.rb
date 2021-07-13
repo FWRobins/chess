@@ -50,6 +50,10 @@ class MembersController < ApplicationController
 
   # DELETE /members/1 or /members/1.json
   def destroy
+    
+    # update ranks of all players at member deletion
+    Member.delete_member(@member)
+
     @member.destroy
     respond_to do |format|
       format.html { redirect_to members_url, notice: "Member was successfully destroyed." }
