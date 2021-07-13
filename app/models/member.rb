@@ -147,6 +147,9 @@ class Member < ApplicationRecord
       lower_member.rank -=1
       lower_member.save()
     end
+
+    Match.member_delete(member)
+
   end
 
 end
